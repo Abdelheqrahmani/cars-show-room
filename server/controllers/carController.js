@@ -26,15 +26,15 @@ export const getAllCars = async (req, res) => {
 
 export const getCarByName = async (req, res) => {
   try {
-    const { name } = req.params; // Extract 'name' from request parameters
-    const car = await Car.findOne({ name }); // Find a car by name
+    const { name } = req.params;
+    const car = await Car.findOne({ name });
 
     if (!car) {
-      return res.status(404).json({ message: "Car not found" }); // Handle case where car doesn't exist
+      return res.status(404).json({ message: "Car not found" });
     }
 
-    res.status(200).json(car); // Return the found car
+    res.status(200).json(car);
   } catch (err) {
-    res.status(500).json({ message: err.message }); // Handle server errors
+    res.status(500).json({ message: err.message });
   }
 };
